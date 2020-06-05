@@ -21,6 +21,17 @@ class FinanceiroActivity : AppCompatActivity() {
         var pieData = PieData(pieDataSet)
         chartDespCategoria.data = pieData;
 
+        //chartRecCategoria
+        var list1 = ArrayList<PieEntry>()
+        list1.add(0, PieEntry(25f, "123"))
+        list1.add(1, PieEntry(25f, "123"))
+        list1.add(2, PieEntry(25f, "123"))
+        list1.add(3, PieEntry(25f, "123"))
+        var pieDataSet1 = PieDataSet(list, "Despesa por categoria")
+        var pieData1 = PieData(pieDataSet1)
+        chartRecCategoria.data = pieData1;
+
+
         var listbar = ArrayList<BarEntry>()
         listbar.add(BarEntry(5f,30f))
         listbar.add(BarEntry(10f,20f))
