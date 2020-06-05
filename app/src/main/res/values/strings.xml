@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">nocontrole_appfree</string>
+    <string name="balanco">Balanço</string>
+    <string name="despmesatual">Despesas</string>
+    <string name="DespCategoria">Despesas por categoria</string>
+    <string name="receitacategoria">Receitas por categoria</string>
+    <string name="descImage">Perfil usuário</string>
+</resources>
