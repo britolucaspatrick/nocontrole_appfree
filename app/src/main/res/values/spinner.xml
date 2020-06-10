@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_new_desrec">
+        <item>Receita</item>
+        <item>Despesa</item>
+    </string-array>
+</resources>
