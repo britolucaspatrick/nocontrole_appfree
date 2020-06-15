@@ -15,6 +15,7 @@ import com.insightapp.nocontrole.R
 import com.insightapp.nocontrole.viewmodel.categoria.CategoriaAdapter
 import com.insightapp.nocontrole.viewmodel.categoria.CategoriaViewModel
 import kotlinx.android.synthetic.main.activity_categoria.*
+import kotlinx.android.synthetic.main.activity_financeiro.*
 import kotlinx.android.synthetic.main.dialog_new_desrec.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,18 +30,10 @@ class CategoriaActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
-        val viewModel: CategoriaViewModel = ViewModelProviders.of(this).get(CategoriaViewModel::class.java)
-        viewModel.categoriasLiveData.observe(this, Observer {
-            it?.let { cat ->
-                with(recyViewCategorias){
-                    layoutManager = LinearLayoutManager(this@CategoriaActivity, RecyclerView.VERTICAL, false)
-                    setHasFixedSize(true)
-                    adapter = CategoriaAdapter(cat)
-                }
-            }
-        })
+        val adapter = CategoriaAdapter(this)
+        recyViewCategorias.adapter = adapter
+        recyViewCategorias.layoutManager = LinearLayoutManager(this)
 
-        viewModel.getCategorias()
 
 
         novoCategoria.setOnClickListener {

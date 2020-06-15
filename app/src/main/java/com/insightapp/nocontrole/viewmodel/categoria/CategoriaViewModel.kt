@@ -1,39 +1,26 @@
 package com.insightapp.nocontrole.viewmodel.categoria
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.insightapp.nocontrole.model.entity.Categoria
+import com.insightapp.nocontrole.model.repository.CategoriaRepository
+import com.insightapp.nocontrole.model.room.CategoriaRoomDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class CategoriaViewModel : ViewModel() {
-    val categoriasLiveData: MutableLiveData<List<Categoria>> = MutableLiveData()
+class CategoriaViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: CategoriaRepository
 
-    fun getCategorias(){
-        categoriasLiveData.value = createFakeBooks()
+    val allCategorias: LiveData<List<Categoria>>
+
+    init {
+        val catDao = CategoriaRoomDatabase.getDatabase(application, viewModelScope).categoriaDao()
+        repository = CategoriaRepository(catDao)
+        allCategorias = repository.allCategorias
     }
 
-    fun createFakeBooks(): List<Categoria>{
-        return listOf(
-            Categoria(
-                0,
-                "Alimentação",
-                0,
-                "#000000",
-                "A"
-            ),
-            Categoria(
-                0,
-                "Moradia",
-                0,
-                "#000000",
-                "A"
-            ),
-            Categoria(
-                0,
-                "Carro",
-                0,
-                "#000000",
-                "A"
-            )
-        )
+    fun insert(categoria: Categoria) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(categoria)
     }
+
 }
