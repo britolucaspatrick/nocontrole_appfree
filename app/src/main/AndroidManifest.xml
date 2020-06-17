@@ -10,12 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.categoria.CategoriaActivity"
-            android:label="@string/title_activity_categoria"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".view.financeiro.FinanceiroActivity"/>
-
-        <activity android:name=".view.financeiro.FinanceiroActivity">
+            android:name=".view.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

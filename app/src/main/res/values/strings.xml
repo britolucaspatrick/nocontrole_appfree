@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">nocontrole_appfree</string>
+    <string name="app_name">NoControle</string>
     <string name="balanco">Balanço</string>
     <string name="despmesatual">Despesas</string>
     <string name="DespCategoria">Despesas por categoria</string>
@@ -7,7 +7,7 @@
     <string name="descImage">Perfil usuário</string>
     <string name="receita">Receita</string>
     <string name="despesa">Despesa</string>
-    <string name="novo_lancamento">+</string>
+    <string name="novo_lancamento">Lançamento</string>
     <string name="desc_novo_lancamento">Novo lançamento de despesa ou receita</string>
     <string name="date_actual">JUN/2020</string>
     <string name="more">+</string>
@@ -16,7 +16,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_categoria">CategoriaActivity</string>
+    <string name="title_activity_categoria">Categoria</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -26,4 +26,21 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="categoria">Categorias</string>
+    <string name="edit_cat">Editar categoria</string>
+    <string name="del_categoria">Excluir categoria</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Dashboard</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="tipo_lan_amento">Tipo lançamento</string>
+    <string name="valor">Valor</string>
 </resources>

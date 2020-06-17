@@ -5,16 +5,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.insightapp.nocontrole.model.dao.CategoriaDao
+import com.insightapp.nocontrole.model.dao.LanctoDao
 import com.insightapp.nocontrole.model.entity.Categoria
+import com.insightapp.nocontrole.model.entity.Lancto
 import com.insightapp.nocontrole.view.MainActivity
 import com.insightapp.nocontrole.viewmodel.ui.categoria.CategoriaViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Categoria::class), version = 1, exportSchema = false)
-abstract class CategoriaRoomDatabase : RoomDatabase() {
+@Database(entities = arrayOf(Lancto::class), version = 1, exportSchema = false)
+abstract class LanctoRoomDatabase : RoomDatabase() {
 
-    abstract fun categoriaDao(): CategoriaDao
+    abstract fun lanctoDao(): LanctoDao
 
     private class CategoriaDatabaseCallback(
         private val scope: CoroutineScope
@@ -32,9 +34,9 @@ abstract class CategoriaRoomDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: CategoriaRoomDatabase? = null
+        private var INSTANCE: LanctoRoomDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): CategoriaRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): LanctoRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -43,8 +45,8 @@ abstract class CategoriaRoomDatabase : RoomDatabase() {
                 return INSTANCE ?: synchronized(this) {
                     val instance = Room.databaseBuilder(
                         context.applicationContext,
-                        CategoriaRoomDatabase::class.java,
-                        "CategoriaRoomDatabase"
+                        LanctoRoomDatabase::class.java,
+                        "LanctoRoomDatabase"
                     )
                         .addCallback(CategoriaDatabaseCallback(scope))
                         .build()
@@ -54,7 +56,7 @@ abstract class CategoriaRoomDatabase : RoomDatabase() {
             }
         }
 
-        fun getDatabase(context: Context): CategoriaRoomDatabase {
+        fun getDatabase(context: Context): LanctoRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -63,8 +65,8 @@ abstract class CategoriaRoomDatabase : RoomDatabase() {
                 return INSTANCE ?: synchronized(this) {
                     val instance = Room.databaseBuilder(
                         context,
-                        CategoriaRoomDatabase::class.java,
-                        "CategoriaRoomDatabase"
+                        LanctoRoomDatabase::class.java,
+                        "LanctoRoomDatabase"
                     ).build()
                     INSTANCE = instance
                     instance

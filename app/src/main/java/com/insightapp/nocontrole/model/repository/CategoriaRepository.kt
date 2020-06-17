@@ -11,4 +11,14 @@ class CategoriaRepository (private val categoriaDao: CategoriaDao) {
     suspend fun insert(categoria: Categoria) {
         categoriaDao.insert(categoria)
     }
+
+    suspend fun cancel(id: Int){
+        categoriaDao.cancel(id)
+    }
+
+    suspend fun update(categoria: Categoria) {
+        categoriaDao.update(categoria)
+    }
+
+
 }
