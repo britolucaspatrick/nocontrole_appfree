@@ -1,10 +1,23 @@
 package com.insightapp.nocontrole.viewmodel.ui.home
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.insightapp.nocontrole.model.repository.LanctoRepository
+import com.insightapp.nocontrole.model.room.AppRoomDatabase
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel (application: Application) : AndroidViewModel(application){
+    private val repository: LanctoRepository
+    val desp: LiveData<Double>
+    val rece: LiveData<Double>
+    var month = 0
+    init {
+        val add = AppRoomDatabase.getDatabase(application).lanctoDao()
+        repository = LanctoRepository(add, month)
+        desp = repository.totByDescByMonth
+        rece = repository.totByRecByMonth
+    }
 
 
 }
+

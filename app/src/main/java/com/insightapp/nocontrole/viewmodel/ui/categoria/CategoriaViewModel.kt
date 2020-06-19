@@ -5,19 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.insightapp.nocontrole.model.entity.Categoria
 import com.insightapp.nocontrole.model.repository.CategoriaRepository
-import com.insightapp.nocontrole.model.room.CategoriaRoomDatabase
+import com.insightapp.nocontrole.model.room.AppRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CategoriaViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allCategorias: LiveData<List<Categoria>>
+    val allCategoriasD: LiveData<List<Categoria>>
     private val repository: CategoriaRepository
 
     init {
-        val catDao = CategoriaRoomDatabase.getDatabase(application).categoriaDao()
+        val catDao = AppRoomDatabase.getDatabase(application).categoriaDao()
         repository = CategoriaRepository(catDao)
-        allCategorias = repository.allCategorias
+        allCategoriasD = repository.allCategoriasD
     }
 
     fun insert(categoria: Categoria) = viewModelScope.launch(Dispatchers.IO) {

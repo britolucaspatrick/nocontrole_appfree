@@ -7,7 +7,7 @@
     <string name="descImage">Perfil usuário</string>
     <string name="receita">Receita</string>
     <string name="despesa">Despesa</string>
-    <string name="novo_lancamento">Lançamento</string>
+    <string name="novo_lancamento">Financeiro</string>
     <string name="desc_novo_lancamento">Novo lançamento de despesa ou receita</string>
     <string name="date_actual">JUN/2020</string>
     <string name="more">+</string>
@@ -37,10 +37,13 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Dashboard</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_gallery">Alimentação</string>
+    <string name="menu_slideshow">Exercício</string>
 
     <string name="home_second">Home Second</string>
     <string name="tipo_lan_amento">Tipo lançamento</string>
     <string name="valor">Valor</string>
+    <string name="data_lan_amento">Data lançamento</string>
+    <string name="select_month">Selecione um mês</string>
+    <string name="trocar">Trocar</string>
 </resources>

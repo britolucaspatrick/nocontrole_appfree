@@ -15,7 +15,7 @@
         android:elevation="6dp">
 
         <TextView
-            android:id="@+id/text_desc"
+            android:id="@+id/text_desc_lancto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/btn_del_cat"
+            android:id="@+id/btn_del_lancto"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/btn_edit_cat"
+            android:id="@+id/btn_edit_lancto"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
@@ -48,7 +48,7 @@
             android:contentDescription="@string/edit_cat"
             android:src="@drawable/ic_create_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_del_cat"
+            app:layout_constraintEnd_toStartOf="@+id/btn_del_lancto"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

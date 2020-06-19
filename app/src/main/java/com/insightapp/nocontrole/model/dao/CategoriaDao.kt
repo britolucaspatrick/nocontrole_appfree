@@ -6,8 +6,11 @@ import com.insightapp.nocontrole.model.entity.Categoria
 @Dao
 interface CategoriaDao {
 
-    @Query("SELECT * from categoria WHERE st_registro != 'C'")
+    @Query("SELECT * from categoria")
     fun getAll(): LiveData<List<Categoria>>
+
+    @Query("SELECT * from categoria WHERE st_registro != 'C'")
+    fun getAllD(): LiveData<List<Categoria>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(categoria: Categoria)

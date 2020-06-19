@@ -6,6 +6,7 @@ import com.insightapp.nocontrole.model.entity.Categoria
 
 class CategoriaRepository (private val categoriaDao: CategoriaDao) {
 
+    val allCategoriasD: LiveData<List<Categoria>> = categoriaDao.getAllD()
     val allCategorias: LiveData<List<Categoria>> = categoriaDao.getAll()
 
     suspend fun insert(categoria: Categoria) {

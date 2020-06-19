@@ -14,7 +14,6 @@ class CategoriaAdapter internal constructor(
 ) : RecyclerView.Adapter<CategoriaAdapter.CategoriasViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var categorias = emptyList<Categoria>()
-    private lateinit var data: Categoria
     private var itemSelectedListener: ItemSelectedListener
     private val context:Context
 
@@ -29,10 +28,10 @@ class CategoriaAdapter internal constructor(
     }
 
     inner class CategoriasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val text_desc_categoria  = itemView.text_desc
+        val text_desc_categoria  = itemView.text_desc_lancto
         val text_rec_or_des = itemView.text_rec_or_des
-        var btn_edit_cat = itemView.btn_edit_cat
-        val btn_del_cat = itemView.btn_del_cat
+        var btn_edit_cat = itemView.btn_edit_lancto
+        val btn_del_cat = itemView.btn_del_lancto
 
     }
 

@@ -61,7 +61,7 @@ class CategoriaFragment : Fragment() {
         root.recyViewCategorias.adapter = adapter
         root.recyViewCategorias.layoutManager = LinearLayoutManager(context)
 
-        viewModel.allCategorias.observe(viewLifecycleOwner, Observer { categorias ->
+        viewModel.allCategoriasD.observe(viewLifecycleOwner, Observer { categorias ->
             categorias?.let {
                 adapter!!.setCategorias(categorias)
             }

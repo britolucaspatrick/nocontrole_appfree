@@ -13,10 +13,11 @@ import com.insightapp.nocontrole.viewmodel.ui.categoria.CategoriaViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Lancto::class), version = 1, exportSchema = false)
-abstract class LanctoRoomDatabase : RoomDatabase() {
+@Database(entities = arrayOf(Lancto::class, Categoria::class), version = 1, exportSchema = false)
+abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun lanctoDao(): LanctoDao
+    abstract fun categoriaDao(): CategoriaDao
 
     private class CategoriaDatabaseCallback(
         private val scope: CoroutineScope
@@ -34,9 +35,9 @@ abstract class LanctoRoomDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: LanctoRoomDatabase? = null
+        private var INSTANCE: AppRoomDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): LanctoRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): AppRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -45,10 +46,11 @@ abstract class LanctoRoomDatabase : RoomDatabase() {
                 return INSTANCE ?: synchronized(this) {
                     val instance = Room.databaseBuilder(
                         context.applicationContext,
-                        LanctoRoomDatabase::class.java,
-                        "LanctoRoomDatabase"
+                        AppRoomDatabase::class.java,
+                        "database"
                     )
                         .addCallback(CategoriaDatabaseCallback(scope))
+                        .fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                     instance
@@ -56,7 +58,7 @@ abstract class LanctoRoomDatabase : RoomDatabase() {
             }
         }
 
-        fun getDatabase(context: Context): LanctoRoomDatabase {
+        fun getDatabase(context: Context): AppRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -65,9 +67,11 @@ abstract class LanctoRoomDatabase : RoomDatabase() {
                 return INSTANCE ?: synchronized(this) {
                     val instance = Room.databaseBuilder(
                         context,
-                        LanctoRoomDatabase::class.java,
-                        "LanctoRoomDatabase"
-                    ).build()
+                        AppRoomDatabase::class.java,
+                        "database"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
                     INSTANCE = instance
                     instance
                 }
