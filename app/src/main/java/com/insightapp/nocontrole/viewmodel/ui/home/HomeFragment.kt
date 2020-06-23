@@ -45,13 +45,30 @@ class HomeFragment : Fragment() {
 
             mDialogView.btn_change_month.setOnClickListener{
                 root.btn_actual_month.text = mDialogView.spinner_month_actual.selectedItem as String
-                findDadosToCreateDashboardByMonth(month)
+                findDataToCreateDashboardByMonth(month)
                 mAlertDialog.dismiss()
             }
         }
 
         //CONFIG CHARTS
+        var listbar = ArrayList<PieEntry>()
+        listbar.add(0, PieEntry(50f, "Despesa"))
+        listbar.add(1, PieEntry(50f, "Receita"))
+        var barDataSet = PieDataSet(listbar, "Balanço")
+        var barData = PieData(barDataSet)
         root.chartBalanco.data = barData
+
+        root.chartBalanco.setDrawCenterText(false)
+        root.chartBalanco.setDrawEntryLabels(false)
+        root.chartBalanco.setDrawRoundedSlices(true)
+        root.chartBalanco.setDrawSlicesUnderHole(true)
+        root.chartBalanco.setUsePercentValues(true)
+
+        root.chartBalanco.description = null
+        root.chartBalanco.setNoDataText("Nada encontrado!")
+
+        //root.chartBalanco.animateXY(3000, 3000)
+
 //        root.chartDespCategoria.data = pieData;
 //        root.chartRecCategoria.data = pieData1;
 //        root.chartDespMes.data = lineData
@@ -61,7 +78,7 @@ class HomeFragment : Fragment() {
 
 
 
-    private fun findDadosToCreateDashboardByMonth(month: Int) {
+    private fun findDataToCreateDashboardByMonth(month: Int) {
 //        var listbar = ArrayList<PieEntry>()
 //        listbar.add(0, PieEntry(receita.toFloat(), "Despesa"))
 //        listbar.add(1, PieEntry(despesa.toFloat(), "Receita"))
