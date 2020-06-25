@@ -1,8 +1,11 @@
 package com.insightapp.nocontrole.model.entity
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/*Entidade mapeada com anotações da biblioteca Room, para criar objeto
+* no banco de dados*/
 @Entity(tableName = "categoria")
 data class Categoria(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

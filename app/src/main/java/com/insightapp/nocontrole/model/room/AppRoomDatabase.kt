@@ -1,4 +1,5 @@
 package com.insightapp.nocontrole.model.room
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -8,11 +9,13 @@ import com.insightapp.nocontrole.model.dao.CategoriaDao
 import com.insightapp.nocontrole.model.dao.LanctoDao
 import com.insightapp.nocontrole.model.entity.Categoria
 import com.insightapp.nocontrole.model.entity.Lancto
-import com.insightapp.nocontrole.view.MainActivity
-import com.insightapp.nocontrole.viewmodel.ui.categoria.CategoriaViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/*
+* Classe responsável pela instância do banco de dados (armazenado do dispositivo)
+* compondo o conjunto de classes de acesso aos objetos
+* */
 @Database(entities = arrayOf(Lancto::class, Categoria::class), version = 1, exportSchema = false)
 abstract class AppRoomDatabase : RoomDatabase() {
 
@@ -22,7 +25,6 @@ abstract class AppRoomDatabase : RoomDatabase() {
     private class CategoriaDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
-
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
             INSTANCE?.let { database ->

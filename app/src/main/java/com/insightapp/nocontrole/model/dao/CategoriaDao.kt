@@ -1,8 +1,11 @@
 package com.insightapp.nocontrole.model.dao
+
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.insightapp.nocontrole.model.entity.Categoria
 
+/*Interface de objeto de acesso a dados através das anotações
+* disponibilizadas pela biblioteca room*/
 @Dao
 interface CategoriaDao {
 

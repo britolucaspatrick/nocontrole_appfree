@@ -1,18 +1,20 @@
-package com.insightapp.nocontrole.viewmodel.ui.home
+package com.insightapp.nocontrole.view
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.insightapp.nocontrole.R
 import com.insightapp.nocontrole.utils.MonthNameById
-import com.insightapp.nocontrole.viewmodel.ui.lancto.LanctoViewModel
+import com.insightapp.nocontrole.viewmodel.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_month_actual.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
@@ -52,26 +54,40 @@ class HomeFragment : Fragment() {
 
         //CONFIG CHARTS
         var listbar = ArrayList<PieEntry>()
-        listbar.add(0, PieEntry(50f, "Despesa"))
-        listbar.add(1, PieEntry(50f, "Receita"))
+        listbar.add(0, PieEntry(150f))
+        listbar.add(1, PieEntry(50f))
+
+
         var barDataSet = PieDataSet(listbar, "Balanço")
+        val colors: ArrayList<Int> = ArrayList()
+        colors.add(Color.rgb(255, 112, 67))
+        colors.add(Color.rgb(41, 182, 246))
+        barDataSet.colors = colors
+
+
         var barData = PieData(barDataSet)
-        root.chartBalanco.data = barData
+        barData.setDrawValues(true)
+        barData.setValueTextSize(10f)
+        barData.setValueTextColor(Color.WHITE)
+        barData.setValueFormatter(PercentFormatter(root.chartBalanco))
 
         root.chartBalanco.setDrawCenterText(false)
         root.chartBalanco.setDrawEntryLabels(false)
-        root.chartBalanco.setDrawRoundedSlices(true)
+        root.chartBalanco.setDrawRoundedSlices(false)
         root.chartBalanco.setDrawSlicesUnderHole(true)
-        root.chartBalanco.setUsePercentValues(true)
-
         root.chartBalanco.description = null
+        root.chartBalanco.setUsePercentValues(true)
         root.chartBalanco.setNoDataText("Nada encontrado!")
+        root.chartBalanco.setDrawHoleEnabled(true)
+        root.chartBalanco.setHoleRadius(50f)
+        root.chartBalanco.setTransparentCircleRadius(55f)
+        root.chartBalanco.setRotationEnabled(false)
+        root.chartBalanco.setHighlightPerTapEnabled(true);
+        root.chartBalanco.getLegend().isEnabled = false
+        root.chartBalanco.animateXY(2000, 2000)
 
-        //root.chartBalanco.animateXY(3000, 3000)
+        root.chartBalanco.data = barData
 
-//        root.chartDespCategoria.data = pieData;
-//        root.chartRecCategoria.data = pieData1;
-//        root.chartDespMes.data = lineData
 
         return root
     }

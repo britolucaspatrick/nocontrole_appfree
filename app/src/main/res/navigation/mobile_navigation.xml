@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.insightapp.nocontrole.viewmodel.ui.home.HomeFragment"
+        android:name="com.insightapp.nocontrole.view.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/nav_lancto"
-        android:name="com.insightapp.nocontrole.viewmodel.ui.lancto.LanctoFragment"
+        android:name="com.insightapp.nocontrole.view.LanctoFragment"
         android:label="@string/novo_lancamento"
         tools:layout="@layout/fragment_lancto"/>
 
     <fragment
         android:id="@+id/nav_categoria"
-        android:name="com.insightapp.nocontrole.viewmodel.ui.categoria.CategoriaFragment"
+        android:name="com.insightapp.nocontrole.view.CategoriaFragment"
         android:label="@string/categoria"
         tools:layout="@layout/fragment_categoria"/>
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.insightapp.nocontrole.viewmodel.ui.gallery.GalleryFragment"
+        android:name="com.insightapp.nocontrole.view.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.insightapp.nocontrole.viewmodel.ui.slideshow.SlideshowFragment"
+        android:name="com.insightapp.nocontrole.view.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

@@ -8,9 +8,11 @@ import com.insightapp.nocontrole.model.room.AppRoomDatabase
 
 class HomeViewModel (application: Application) : AndroidViewModel(application){
     private val repository: LanctoRepository
-    val desp: LiveData<Double>
-    val rece: LiveData<Double>
+    val desp: LiveData<Float>
+    val rece: LiveData<Float>
+
     var month = 0
+
     init {
         val add = AppRoomDatabase.getDatabase(application).lanctoDao()
         repository = LanctoRepository(add, month)

@@ -3,6 +3,8 @@ import androidx.room.*
 import com.insightapp.nocontrole.utils.Converters
 import java.util.*
 
+/*Entidade mapeada com anotações da biblioteca Room, para criar objeto
+* no banco de dados*/
 @Entity(tableName = "lancto")
 @TypeConverters(Converters::class)
 data class Lancto(

@@ -1,4 +1,5 @@
 package com.insightapp.nocontrole.viewmodel.ui.categoria
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View

@@ -4,4 +4,7 @@
     <color name="primaryLightColor">#aab3ff</color>
     <color name="primaryDarkColor">#3d58bf</color>
     <color name="primaryTextColor">#000000</color>
+    <color name="delete">#F44336</color>
+    <color name="edit">#42A5F5</color>
+
 </resources>

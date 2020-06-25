@@ -4,6 +4,8 @@ import androidx.room.*
 import com.insightapp.nocontrole.model.entity.Lancto
 import java.time.Month
 
+/*Interface de objeto de acesso a dados através das anotações
+* disponibilizadas pela biblioteca room*/
 @Dao
 interface LanctoDao {
 
@@ -28,7 +30,7 @@ interface LanctoDao {
             "WHERE lancto.st_registro != 'C' " +
             "AND strftime('%m', lancto.dt_lancto) = :month " +
             "AND categoria.tp_lancto = 0")
-     fun totByRecByMonth(month: Int) : LiveData<Double>
+     fun totByRecByMonth(month: Int) : LiveData<Float>
 
     @Query("SELECT SUM(lancto.valor) " +
             "FROM lancto " +
@@ -36,6 +38,6 @@ interface LanctoDao {
             "WHERE lancto.st_registro != 'C' " +
             "AND strftime('%m', lancto.dt_lancto) = :month " +
             "AND categoria.tp_lancto = 1")
-     fun totByDescByMonth(month: Int): LiveData<Double>
+     fun totByDescByMonth(month: Int): LiveData<Float>
 
 }

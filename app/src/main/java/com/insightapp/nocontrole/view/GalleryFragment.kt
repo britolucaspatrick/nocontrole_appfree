@@ -1,4 +1,4 @@
-package com.insightapp.nocontrole.viewmodel.ui.gallery
+package com.insightapp.nocontrole.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.insightapp.nocontrole.R
+import com.insightapp.nocontrole.viewmodel.ui.gallery.GalleryViewModel
 
 class GalleryFragment : Fragment() {
 

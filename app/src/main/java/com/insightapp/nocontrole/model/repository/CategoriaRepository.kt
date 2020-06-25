@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import com.insightapp.nocontrole.model.dao.CategoriaDao
 import com.insightapp.nocontrole.model.entity.Categoria
 
+/*Classe intermediária responsável por disponibilizar e/ou manutenção de dados,
+* através da biblioteca room ou retrofit*/
 class CategoriaRepository (private val categoriaDao: CategoriaDao) {
 
     val allCategoriasD: LiveData<List<Categoria>> = categoriaDao.getAllD()
