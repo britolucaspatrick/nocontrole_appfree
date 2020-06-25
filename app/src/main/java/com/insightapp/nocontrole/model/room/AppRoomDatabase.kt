@@ -39,6 +39,11 @@ abstract class AppRoomDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppRoomDatabase? = null
 
+        var TEST_MODE = false
+        private val databaseName = "database"
+
+
+
         fun getDatabase(context: Context, scope: CoroutineScope): AppRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -66,18 +71,35 @@ abstract class AppRoomDatabase : RoomDatabase() {
                 return tempInstance
             }
             synchronized(this) {
-                return INSTANCE ?: synchronized(this) {
-                    val instance = Room.databaseBuilder(
-                        context,
-                        AppRoomDatabase::class.java,
-                        "database"
-                    )
-                        .fallbackToDestructiveMigration()
-                        .build()
-                    INSTANCE = instance
-                    instance
+                if (INSTANCE == null) {
+                    if (TEST_MODE){
+                        synchronized(this) {
+                            INSTANCE = Room.inMemoryDatabaseBuilder(context, AppRoomDatabase::class.java)
+                                .allowMainThreadQueries()
+                                .build()
+                            return INSTANCE!!
+                        }
+                    }else{
+                        synchronized(this) {
+                            INSTANCE = Room.databaseBuilder(
+                                context,
+                                AppRoomDatabase::class.java,
+                                databaseName
+                            )
+                                .fallbackToDestructiveMigration()
+                                .build()
+                            return INSTANCE!!
+                        }
+                    }
                 }
+
+
+                return INSTANCE!!
             }
+        }
+
+        private fun close() {
+            INSTANCE?.close()
         }
     }
 }

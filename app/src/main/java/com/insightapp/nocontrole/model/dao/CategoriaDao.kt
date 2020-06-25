@@ -16,7 +16,7 @@ interface CategoriaDao {
     fun getAllD(): LiveData<List<Categoria>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(categoria: Categoria)
+     fun insert(categoria: Categoria)
 
     @Query("DELETE FROM categoria")
     suspend fun deleteAll()
@@ -26,5 +26,11 @@ interface CategoriaDao {
 
     @Update
     suspend fun update(categoria: Categoria)
+
+    @Query("SELECT * from categoria WHERE id = :id LIMIT 1")
+     fun first(id: Int): LiveData<Categoria>
+
+    @Query("SELECT count(*) FROM categoria")
+    fun count(): Int
 
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -24,6 +25,13 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var month = Calendar.getInstance().time.month
+    private lateinit var barData: PieData
+    private lateinit var listbar: ArrayList<PieEntry>
+    private lateinit var barDataSet: PieDataSet
+    private lateinit var root: View
+    private val colorsBalanco: ArrayList<Int>
+            = ArrayList(Arrays.asList(Color.rgb(255, 112, 67),Color.rgb(41, 182, 246)))
+
 
     /*The system calls this when it's time for the fragment to draw its user interface for the first time.
     To draw a UI for your fragment, you must return a View from this method that is the root
@@ -33,9 +41,11 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        root = inflater.inflate(R.layout.fragment_home, container, false)
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.month = month
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        //homeViewModel.month = month
+
+        findDataToCreateDashboardByMonth(month)
 
         root.btn_actual_month.text = MonthNameById.get(month)
         root.btn_actual_month.setOnClickListener{
@@ -51,50 +61,45 @@ class HomeFragment : Fragment() {
                 mAlertDialog.dismiss()
             }
         }
-
-        //CONFIG CHARTS
-        var listbar = ArrayList<PieEntry>()
-        listbar.add(0, PieEntry(150f))
-        listbar.add(1, PieEntry(50f))
-
-
-        var barDataSet = PieDataSet(listbar, "Balanço")
-        val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.rgb(255, 112, 67))
-        colors.add(Color.rgb(41, 182, 246))
-        barDataSet.colors = colors
-
-
-        var barData = PieData(barDataSet)
-        barData.setDrawValues(true)
-        barData.setValueTextSize(10f)
-        barData.setValueTextColor(Color.WHITE)
-        barData.setValueFormatter(PercentFormatter(root.chartBalanco))
-
-        root.chartBalanco.setDrawCenterText(false)
-        root.chartBalanco.setDrawEntryLabels(false)
-        root.chartBalanco.setDrawRoundedSlices(false)
-        root.chartBalanco.setDrawSlicesUnderHole(true)
-        root.chartBalanco.description = null
-        root.chartBalanco.setUsePercentValues(true)
-        root.chartBalanco.setNoDataText("Nada encontrado!")
-        root.chartBalanco.setDrawHoleEnabled(true)
-        root.chartBalanco.setHoleRadius(50f)
-        root.chartBalanco.setTransparentCircleRadius(55f)
-        root.chartBalanco.setRotationEnabled(false)
-        root.chartBalanco.setHighlightPerTapEnabled(true);
-        root.chartBalanco.getLegend().isEnabled = false
-        root.chartBalanco.animateXY(2000, 2000)
-
-        root.chartBalanco.data = barData
+//
+//        barData.setDrawValues(true)
+//        barData.setValueTextSize(10f)
+//        barData.setValueTextColor(Color.WHITE)
+//        barData.setValueFormatter(PercentFormatter(root.chartBalanco))
+//
+//        root.chartBalanco.setDrawCenterText(false)
+//        root.chartBalanco.setDrawEntryLabels(false)
+//        root.chartBalanco.setDrawRoundedSlices(false)
+//        root.chartBalanco.setDrawSlicesUnderHole(true)
+//        root.chartBalanco.description = null
+//        root.chartBalanco.setUsePercentValues(true)
+//        root.chartBalanco.setNoDataText(R.string.nadaEncontrado.toString())
+//        root.chartBalanco.setDrawHoleEnabled(true)
+//        root.chartBalanco.setHoleRadius(50f)
+//        root.chartBalanco.setTransparentCircleRadius(55f)
+//        root.chartBalanco.setRotationEnabled(false)
+//        root.chartBalanco.setHighlightPerTapEnabled(true);
+//        root.chartBalanco.getLegend().isEnabled = false
+//        root.chartBalanco.animateXY(2000, 2000)
+//
+//        root.chartBalanco.data = barData
 
 
         return root
     }
 
 
-
     private fun findDataToCreateDashboardByMonth(month: Int) {
+//        listbar = ArrayList()
+//        listbar.add(0, PieEntry(150f))
+//        listbar.add(1, PieEntry(50f))
+//
+//        barDataSet = PieDataSet(listbar, "Balanço")
+//        barDataSet.colors = colorsBalanco
+//        barData = PieData(barDataSet)
+
+
+
 //        var listbar = ArrayList<PieEntry>()
 //        listbar.add(0, PieEntry(receita.toFloat(), "Despesa"))
 //        listbar.add(1, PieEntry(despesa.toFloat(), "Receita"))
@@ -134,3 +139,4 @@ class HomeFragment : Fragment() {
 
 
 }
+

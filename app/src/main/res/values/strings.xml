@@ -46,4 +46,7 @@
     <string name="data_lan_amento">Data lançamento</string>
     <string name="select_month">Selecione um mês</string>
     <string name="trocar">Trocar</string>
+
+
+    <string name="nadaEncontrado">Nada encontrado</string>
 </resources>

@@ -28,25 +28,27 @@
 
         <ImageButton
             android:id="@+id/btn_del_lancto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:background="@drawable/ic_close_black_24dp"
+            android:backgroundTint="@color/delete"
             android:contentDescription="@string/del_categoria"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_close_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_edit_lancto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:background="@drawable/ic_create_black_24dp"
+            android:backgroundTint="@color/edit"
             android:contentDescription="@string/edit_cat"
-            android:src="@drawable/ic_create_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_del_lancto"
             app:layout_constraintTop_toTopOf="parent" />

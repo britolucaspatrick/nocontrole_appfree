@@ -1,6 +1,7 @@
 package com.insightapp.nocontrole.model.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.insightapp.nocontrole.model.dao.LanctoDao
 import com.insightapp.nocontrole.model.entity.Lancto
 
@@ -9,8 +10,8 @@ import com.insightapp.nocontrole.model.entity.Lancto
 class LanctoRepository (private val lanctoDao: LanctoDao, private val month: Int = 0) {
 
     val allLanctos: LiveData<List<Lancto>> = lanctoDao.getAll()
-    val totByDescByMonth: LiveData<Float> = lanctoDao.totByDescByMonth(month)
-    val totByRecByMonth: LiveData<Float> = lanctoDao.totByRecByMonth(month)
+//    val totByDescByMonth: Float = lanctoDao.totByDescByMonth(month)
+//    val totByRecByMonth: Float = lanctoDao.totByRecByMonth(month)
 
     suspend fun insert(lancto: Lancto) {
         lanctoDao.insert(lancto)
