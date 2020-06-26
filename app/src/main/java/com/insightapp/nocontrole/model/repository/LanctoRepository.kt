@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.insightapp.nocontrole.model.dao.LanctoDao
 import com.insightapp.nocontrole.model.entity.Lancto
+import java.util.*
 
 /*Classe intermediária responsável por disponibilizar e/ou manutenção de dados,
 * através da biblioteca room ou retrofit*/
-class LanctoRepository (private val lanctoDao: LanctoDao, private val month: Int = 0) {
+class LanctoRepository (private val lanctoDao: LanctoDao) {
 
     val allLanctos: LiveData<List<Lancto>> = lanctoDao.getAll()
-//    val totByDescByMonth: Float = lanctoDao.totByDescByMonth(month)
-//    val totByRecByMonth: Float = lanctoDao.totByRecByMonth(month)
 
     suspend fun insert(lancto: Lancto) {
         lanctoDao.insert(lancto)
@@ -24,5 +23,8 @@ class LanctoRepository (private val lanctoDao: LanctoDao, private val month: Int
     suspend fun update(lancto: Lancto) {
         lanctoDao.update(lancto)
     }
+
+    suspend fun getDespMonth(init: Date, final: Date): Float = lanctoDao.totByDescByMonth(init, final)
+    suspend fun getRecMonth(init: Date, final: Date): Float = lanctoDao.totByRecByMonth(init, final)
 
 }

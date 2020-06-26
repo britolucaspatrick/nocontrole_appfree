@@ -30,21 +30,17 @@ interface LanctoDao {
             "FROM lancto " +
             "INNER JOIN categoria ON lancto.tp_categoria = categoria.id " +
             "WHERE lancto.st_registro != 'C' " +
-            "AND strftime('%m', lancto.dt_lancto) = :month " +
-            "AND categoria.tp_lancto = 0")
-     fun totByRecByMonth(month: Int) : Float
+            "AND categoria.tp_lancto = 0 " +
+            "AND lancto.dt_lancto BETWEEN :init AND :final ")
+    suspend fun totByRecByMonth(init: Date, final: Date) : Float
 
     @Query("SELECT SUM(lancto.valor) " +
             "FROM lancto " +
             "INNER JOIN categoria ON lancto.tp_categoria = categoria.id " +
-            "WHERE lancto.st_registro != 'C' ")
-    fun totByDescByMonth(): Float
-
-    @Query("SELECT lancto.valor FROM lancto WHERE lancto.dt_lancto BETWEEN :init AND :final")
-    fun sumValor(init: Date, final: Date): Float
-
-    @Query("SELECT lancto.dt_lancto FROM lancto LIMIT 1")
-    fun getMonth(): Long
+            "WHERE lancto.st_registro != 'C' " +
+            "AND categoria.tp_lancto = 1 " +
+            "AND lancto.dt_lancto BETWEEN :init AND :final ")
+    suspend fun totByDescByMonth(init: Date, final: Date): Float
 
     @Query("SELECT COUNT(*) FROM lancto")
     fun count(): Int

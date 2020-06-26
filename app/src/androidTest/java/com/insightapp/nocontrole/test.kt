@@ -1,6 +1,5 @@
 package com.insightapp.nocontrole
 
-import android.util.Log
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry
 import com.insightapp.nocontrole.model.dao.CategoriaDao
@@ -39,30 +38,28 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun total_balanco_despesa(){
-        val categoria = Categoria(0, "Salário", 1, "000000", "A")
-        categoriaDao.insert(categoria)
+     fun totByDescByMonth(){
 
-        var count:Int = categoriaDao.count()
-        assertTrue("erro categoria", count == 1)
-
-        val date = Calendar.getInstance()
-
-        val lancto = Lancto(0, "Mercado", 0, date.time, "A", 150.0)
-        lanctoDao.insert(lancto)
-        count = lanctoDao.count()
-        assertTrue("erro lancamento", count == 1)
-
-        var init = Calendar.getInstance()
-        init.set(2020, 1, 1)
-
-        var final = Calendar.getInstance()
-        final.set(2020, 12, 31)
-
-        val desc = lanctoDao.sumValor(init.time, final.time)
-        assertTrue("valor diferente ${desc}", desc == null)
+//        val desc = lanctoDao.totByDescByMonth(init.time, final.time)
+//        assertTrue("valor diferente ${desc}", desc == null)
     }
 
+    @Test
+    fun CategoriaWithTotal(){
+        val cat1 = Categoria(0, "1", 1, "", "A")
+        categoriaDao.insert(cat1)
+        val cat2 = Categoria(0, "2", 1, "", "A")
+        categoriaDao.insert(cat2)
+        val cat3 = Categoria(0, "3", 1, "", "A")
+        categoriaDao.insert(cat3)
+
+        val lan1 = Lancto(0, "1", 1, Date(), "A", 100.0)
+        lanctoDao.insert(lan1)
+        val lan2 = Lancto(0, "2", 3, Date(), "A", 20.0)
+        lanctoDao.insert(lan2)
+
+        
+    }
 
 
 }

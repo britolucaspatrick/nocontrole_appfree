@@ -3,6 +3,7 @@ package com.insightapp.nocontrole.model.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.insightapp.nocontrole.model.entity.Categoria
+import com.insightapp.nocontrole.model.entity.CategoriaWithTotal
 
 /*Interface de objeto de acesso a dados através das anotações
 * disponibilizadas pela biblioteca room*/
@@ -27,10 +28,19 @@ interface CategoriaDao {
     @Update
     suspend fun update(categoria: Categoria)
 
-    @Query("SELECT * from categoria WHERE id = :id LIMIT 1")
-     fun first(id: Int): LiveData<Categoria>
+    @Query("SELECT * from categoria LIMIT 1")
+     fun first(): Categoria
 
     @Query("SELECT count(*) FROM categoria")
     fun count(): Int
+
+    @Query("SELECT categoria.tp_lancto, SUM(lancto.valor) as Total " +
+            "FROM categoria " +
+            "INNER JOIN lancto ON categoria.id = lancto.tp_categoria " +
+            "WHERE categoria.st_registro != 'C' " +
+            "AND categoria.tp_lancto = 1 " +
+            "AND lancto.st_registro != 'C' " +
+            "GROUP BY categoria.tp_lancto, Total")
+    fun totLanctoByCategoriaDesc(): CategoriaWithTotal
 
 }

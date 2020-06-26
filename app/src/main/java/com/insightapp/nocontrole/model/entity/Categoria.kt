@@ -1,6 +1,7 @@
 package com.insightapp.nocontrole.model.entity
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -13,4 +14,9 @@ data class Categoria(
     @ColumnInfo(name = "tp_lancto") var tp_lancto: Int,
     @ColumnInfo(name = "hexa_color") var hexa_color: String,
     @ColumnInfo(name = "st_registro") var st_registro: String
+)
+
+data class CategoriaWithTotal(
+    @Embedded val categoria: Categoria,
+    val Total: Int
 )

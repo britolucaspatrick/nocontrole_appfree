@@ -6,7 +6,6 @@ import java.util.*
 /*Entidade mapeada com anotações da biblioteca Room, para criar objeto
 * no banco de dados*/
 @Entity(tableName = "lancto")
-@TypeConverters(Converters::class)
 data class Lancto(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "desc") var desc: String,
